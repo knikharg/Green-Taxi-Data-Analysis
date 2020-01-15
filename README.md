@@ -32,11 +32,30 @@ The dataset is about TLC green taxi service for years 2016 to 2018. The data is 
 
 Model used: 
 
-The model chosen to fit the model is Random Forest Tree Regressor. The aim of this research question is to explain the prediction of the total amount (profit) by analysing how each feature affects the output instance. To judge the feature importance using the SHapley Additive exPlanations (SHAP) that uses game theory to interpret the model chosen. SHAP has two estimation approaches KernalSHAP and TreeSHAP. TreeSHAP is the estimation approach used to predict the Shapley values here as Tree based models as that would help us correctly estimate SHAP values when features are dependent. Also it is computationally less expensive when compared against KernalSHAP. The features can be interpreted on a global as well as a local level. The model chosen to fit the model is Random Forest Tree Regressor, where our input features are 'VendorID', 'RatecodeID', 'PULocationID', 'DOLocationID', 'passenger_count', 'trip_distance',’duration’ , 'payment_type', 'trip_type', 'pickup_year', 'pickup_month', 'pickup_day', 'pickup_hour','pickup_minutes', 'dropOff_year','dropOff_month','dropOff_day','dropOff_hour','dropOff_minutes',’speed’.‘total_amount’ is the output variable as is constituted of approximately the sum of the input features given below. Hence these features, 'fare_amount', 'extra', 'mta_tax', 'tip_amount', 'tolls_amount', and 'improvement_surcharge', have been removed to build the model.
+The model chosen to fit the data is Random Forest Tree Regressor. The aim of this research question is to explain the prediction of the total amount (profit) by analysing how each feature affects the output instance. To judge the feature importance using the SHapley Additive exPlanations (SHAP) that uses game theory to interpret the model chosen. SHAP has two estimation approaches KernalSHAP and TreeSHAP. TreeSHAP is the estimation approach used to predict the Shapley values here as Tree based models as that would help us correctly estimate SHAP values when features are dependent. Also it is computationally less expensive when compared against KernalSHAP. The features can be interpreted on a global as well as a local level. The model chosen to fit the model is Random Forest Tree Regressor, where our input features are 'VendorID', 'RatecodeID', 'PULocationID', 'DOLocationID', 'passenger_count', 'trip_distance',’duration’ , 'payment_type', 'trip_type', 'pickup_year', 'pickup_month', 'pickup_day', 'pickup_hour','pickup_minutes', 'dropOff_year','dropOff_month','dropOff_day','dropOff_hour','dropOff_minutes',’speed’.‘total_amount’ is the output variable as is constituted of approximately the sum of the input features given below. Hence these features, 'fare_amount', 'extra', 'mta_tax', 'tip_amount', 'tolls_amount', and 'improvement_surcharge', have been removed to build the model.
 
 The model gives *89.55%* accuracy when trained on data from 2018 and tested on 2019 data hence this model was chosen.
     
     
     
-  
+## Research Question 2
+ 
+###  Predict the trend in the revenue during holiday season like Christmas
+
+### Data Pre-processing:
+1. For this question, sought for a different pre-processing since data required was in year-month-date format. For this question focus is mainly on two columns of the dataset namely ‘total_amount’ and ‘pickup_date’.
+2. For date to be categorized as a holiday or not, we first imported the US Federal calendar and weekend calendar. We then marked these holidays and weekends as Boolean value 1 and the rest as 0.
+3. We grouped the data yearly. The training data consists of the year 2017, 2018 and 6 months for 2019 while we have predict the forecast values for the year 2019.
+4. The rest of data pre-processing will be the same as stated earlier.
+
+
+Model used:
+
+Used ARIMAX model which stands for Autoregressive Integrated Moving Average. ARIMA model basically explains the time series based on its own past values and lagged forecast errors. It creates an equation based upon the average of the past values to forecast the future or the predicted values. ARIMA models are denoted by ARIMA(p,d,q) which stands for seasonality, trend and noise respectively.
++ P denoted the number of lagged values that have to be added or subtracted from the target which captures the “autoregressive” nature    of ARIMA. This results in improved predictions on local growth or decline in our data.
++ D is basically the degree to which our data is going up or down. So if d=0 that means out data does not go up or down, d=1 means that our data trends linearly, d=2 means our data trends exponentially. To summarize, d denotes the number of times that the data have to be difference to produce a signal (which has constant mean over time).
++ Q captures the moving average part of ARIMA. It represents the number of prior or lagged values for the error term that are added or subtracted to Y
++ The main aim is to select the best (ie. optimal) set of parameters that yields best performance for our model. In simpler terms we take the lowest AIC value.
+
+The model captured total amount (revenue) seasonality. As forecast further out into the future, it is natural for us to become less confident in our values. This is reflected by the confidence intervals generated by our model, which grow larger as we move further out into the future.
  
