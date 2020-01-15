@@ -21,9 +21,9 @@ The dataset is about TLC green taxi service for years 2016 to 2018. The data is 
     5. ‘trip_distance’ – Rides whose trip distance lesser than or equal to zero are considered as cancelled rides. Hence, trip distances                            which are greater than zero are considered.
 4. Date and Time format: ‘lpep_pickup_datetime’ and ‘lpep_dropoff_datetime’ store pickup and drop off date and time of every unique ride. Each of these columns were separated according to year, month, day, hour and minutes.
 5. Dropped columns:
-        1. ‘ehail_fee’ – This column consists entirely of zeros values which can be ignored.
-        2. ‘lpep_pickup_datetime’ – Since date and time of pickup of customer has been incorporated by the separate columns created for                                      year, month, date and time, this column for removed.
-        3. ‘lpep_dropoff_datetime’ - Since date and time of drop off of the customer has been incorporated by the separate columns                                            created for year, month, date and time, this column for removed.
+    1. ‘ehail_fee’ – This column consists entirely of zeros values which can be ignored.
+    2. ‘lpep_pickup_datetime’ – Since date and time of pickup of customer has been incorporated by the separate columns created for                                      year, month, date and time, this column for removed.
+    3. ‘lpep_dropoff_datetime’ - Since date and time of drop off of the customer has been incorporated by the separate columns                                            created for year, month, date and time, this column for removed.
     
     
 ## Research Question 1 
